@@ -42,14 +42,14 @@ public class AgendamentoService {
         return agendamentoRepository.findByDataHoraAgendamentoBetween(primeiraHoraDia, horaFinalDia);
     }
 
-    public Agendamento alterarAgendamento(Agendamento agendamento, String cliente, LocalDateTime dataHoraAgendamento){
+    public Agendamento alterarAgendamento(Agendamento agendamento, String cliente, LocalDateTime dataHoraAgendamento) {
         Agendamento agenda = agendamentoRepository.findByDataHoraAgendamentoAndCliente(dataHoraAgendamento, cliente);
 
-        if(Objects.isNull(agenda)){
+        if (Objects.isNull(agenda)) {
             throw new RuntimeException("Horário não está preenchido");
         }
 
         agendamento.setId(agenda.getId());
         return agendamentoRepository.save(agendamento);
-    }re
+    }
 }
